@@ -576,7 +576,7 @@ it:
   text_tip_issue_begin_day: attività che iniziano in questa giornata
   text_tip_issue_end_day: attività che terminano in questa giornata
   text_tip_issue_begin_end_day: attività che iniziano e terminano in questa giornata
-  text_project_identifier_info: "Lettere minuscole (a-z), numeri e trattini permessi.<br />Una volta salvato, l'identificativo non può essere modificato."
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "massimo %{count} caratteri."
   text_length_between: "Lunghezza compresa tra %{min} e %{max} caratteri."
   text_tracker_no_workflow: Nessun workflow definito per questo tracker
@@ -939,3 +939,11 @@ it:
   setting_commit_logtime_enabled: Abilita registrazione del tempo di collegamento
   notice_gantt_chart_truncated: Il grafico è stato troncato perchè eccede il numero di oggetti (%{max}) da visualizzare
   setting_gantt_items_limit: Massimo numero di oggetti da visualizzare sul diagramma di gantt
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

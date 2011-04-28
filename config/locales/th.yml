@@ -661,7 +661,7 @@ th:
   text_tip_issue_begin_day: งานที่เริ่มวันนี้
   text_tip_issue_end_day: งานที่จบวันนี้
   text_tip_issue_begin_end_day: งานที่เริ่มและจบวันนี้
-  text_project_identifier_info: 'ภาษาอังกฤษตัวเล็ก(a-z), ตัวเลข(0-9) และขีด (-) เท่านั้น.<br />เมื่อจัดเก็บแล้ว, ชื่อเฉพาะไม่สามารถเปลี่ยนแปลงได้'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "สูงสุด %{count} ตัวอักษร."
   text_caracters_minimum: "ต้องยาวอย่างน้อย %{count} ตัวอักษร."
   text_length_between: "ความยาวระหว่าง %{min} ถึง %{max} ตัวอักษร."
@@ -935,3 +935,11 @@ th:
   setting_commit_logtime_enabled: Enable time logging
   notice_gantt_chart_truncated: The chart was truncated because it exceeds the maximum number of items that can be displayed (%{max})
   setting_gantt_items_limit: Maximum number of items displayed on the gantt chart
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

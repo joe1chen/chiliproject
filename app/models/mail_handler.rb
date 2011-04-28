@@ -47,7 +47,7 @@ class MailHandler < ActionMailer::Base
     sender_email = email.from.to_a.first.to_s.strip
     # Ignore emails received from the application emission address to avoid hell cycles
     if sender_email.downcase == Setting.mail_from.to_s.strip.downcase
-      logger.info  "MailHandler: ignoring email from Redmine emission address [#{sender_email}]" if logger && logger.info
+      logger.info  "MailHandler: ignoring email from emission address [#{sender_email}]" if logger && logger.info
       return false
     end
     @user = User.find_by_mail(sender_email) if sender_email.present?
@@ -81,7 +81,7 @@ class MailHandler < ActionMailer::Base
   
   private
 
-  MESSAGE_ID_RE = %r{^<redmine\.([a-z0-9_]+)\-(\d+)\.\d+@}
+  MESSAGE_ID_RE = %r{^<chiliproject\.([a-z0-9_]+)\-(\d+)\.\d+@}
   ISSUE_REPLY_SUBJECT_RE = %r{\[[^\]]*#(\d+)\]}
   MESSAGE_REPLY_SUBJECT_RE = %r{\[[^\]]*msg(\d+)\]}
   
@@ -100,7 +100,7 @@ class MailHandler < ActionMailer::Base
     elsif m = email.subject.match(MESSAGE_REPLY_SUBJECT_RE)
       receive_message_reply(m[1].to_i)
     else
-      receive_issue
+      dispatch_to_default
     end
   rescue ActiveRecord::RecordInvalid => e
     # TODO: send a email to the user
@@ -112,6 +112,14 @@ class MailHandler < ActionMailer::Base
   rescue UnauthorizedAction => e
     logger.error "MailHandler: unauthorized attempt from #{user}" if logger
     false
+  end
+
+  # Dispatch the mail to the default method handler, receive_issue
+  #
+  # This can be overridden or patched to support handling other incoming
+  # email types
+  def dispatch_to_default
+    receive_issue
   end
   
   # Creates a new issue

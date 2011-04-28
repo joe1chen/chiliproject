@@ -663,7 +663,7 @@ da:
   text_tip_issue_begin_day: opgaven begynder denne dag
   text_tip_issue_end_day: opaven slutter denne dag
   text_tip_issue_begin_end_day: opgaven begynder og slutter denne dag
-  text_project_identifier_info: 'Små bogstaver (a-z), numre og bindestreg er tilladt.<br />Denne er en unik identifikation for projektet, og kan defor ikke rettes senere.'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "max %{count} karakterer."
   text_caracters_minimum: "Skal være mindst %{count} karakterer lang."
   text_length_between: "Længde skal være mellem %{min} og %{max} karakterer."
@@ -954,3 +954,11 @@ da:
   setting_commit_logtime_enabled: Enable time logging
   notice_gantt_chart_truncated: The chart was truncated because it exceeds the maximum number of items that can be displayed (%{max})
   setting_gantt_items_limit: Maximum number of items displayed on the gantt chart
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

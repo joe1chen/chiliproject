@@ -793,7 +793,14 @@ en:
   label_project_copy_notifications: Send email notifications during the project copy
   label_principal_search: "Search for user or group:"
   label_user_search: "Search for user:"
-  
+  label_git_path: Path to .git directory
+  label_darcs_path: Root directory
+  label_mercurial_path: Root directory
+  label_cvs_path: CVSROOT
+  label_cvs_module: Module
+  label_bazaar_path: Root directory
+  label_filesystem_path: Root directory
+
   button_login: Login
   button_submit: Submit
   button_save: Save
@@ -864,7 +871,7 @@ en:
   text_tip_issue_begin_day: issue beginning this day
   text_tip_issue_end_day: issue ending this day
   text_tip_issue_begin_end_day: issue beginning and ending this day
-  text_project_identifier_info: 'Only lower case letters (a-z), numbers and dashes are allowed.<br />Once saved, the identifier can not be changed.'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "%{count} characters maximum."
   text_caracters_minimum: "Must be at least %{count} characters long."
   text_length_between: "Length between %{min} and %{max} characters."
@@ -908,6 +915,7 @@ en:
   text_own_membership_delete_confirmation: "You are about to remove some or all of your permissions and may no longer be able to edit this project after that.\nAre you sure you want to continue?"
   text_zoom_in: Zoom in
   text_zoom_out: Zoom out
+  text_powered_by: "Powered by %{link}"
   
   default_role_manager: Manager
   default_role_developer: Developer

@@ -661,7 +661,7 @@ cs:
   text_tip_issue_begin_day: úkol začíná v tento den
   text_tip_issue_end_day: úkol končí v tento den
   text_tip_issue_begin_end_day: úkol začíná a končí v tento den
-  text_project_identifier_info: 'Jsou povolena malá písmena (a-z), čísla a pomlčky.<br />Po uložení již není možné identifikátor změnit.'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "%{count} znaků maximálně."
   text_caracters_minimum: "Musí být alespoň %{count} znaků dlouhé."
   text_length_between: "Délka mezi %{min} a %{max} znaky."
@@ -938,3 +938,11 @@ cs:
   setting_commit_logtime_enabled: Enable time logging
   notice_gantt_chart_truncated: The chart was truncated because it exceeds the maximum number of items that can be displayed (%{max})
   setting_gantt_items_limit: Maximum number of items displayed on the gantt chart
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

@@ -842,7 +842,7 @@ sr:
   text_tip_issue_begin_day: задатак почиње овог дана
   text_tip_issue_end_day: задатак се завршава овог дана
   text_tip_issue_begin_end_day: задатак почиње и завршава овог дана
-  text_project_identifier_info: 'Дозвољена су само мала слова (a-ш), бројеви и цртице.<br />Једном снимљен идентификатор више се не може променити.'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "Највише %{count} знак(ова)."
   text_caracters_minimum: "Број знакова мора бити најмање %{count}."
   text_length_between: "Број знакова мора бити између %{min} и %{max}."
@@ -939,3 +939,11 @@ sr:
   setting_commit_logtime_enabled: Enable time logging
   notice_gantt_chart_truncated: The chart was truncated because it exceeds the maximum number of items that can be displayed (%{max})
   setting_gantt_items_limit: Maximum number of items displayed on the gantt chart
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

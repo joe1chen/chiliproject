@@ -886,7 +886,7 @@ ja:
   text_tip_issue_begin_day: この日に開始するタスク
   text_tip_issue_end_day: この日に終了するタスク
   text_tip_issue_begin_end_day: この日のうちに開始して終了するタスク
-  text_project_identifier_info: '英小文字(a-z)と数字とダッシュ(-)が使えます。<br />一度保存すると、識別子は変更できません。'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "最大%{count}文字です。"
   text_caracters_minimum: "最低%{count}文字の長さが必要です"
   text_length_between: "長さは%{min}から%{max}文字までです。"
@@ -959,3 +959,11 @@ ja:
   enumeration_doc_categories: 文書カテゴリ
   enumeration_activities: 作業分類 (時間トラッキング)
   enumeration_system_activity: システム作業分類
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

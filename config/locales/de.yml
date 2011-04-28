@@ -866,7 +866,7 @@ de:
   text_tip_issue_begin_day: Aufgabe, die an diesem Tag beginnt
   text_tip_issue_end_day: Aufgabe, die an diesem Tag endet
   text_tip_issue_begin_end_day: Aufgabe, die an diesem Tag beginnt und endet
-  text_project_identifier_info: 'Kleinbuchstaben (a-z), Ziffern und Bindestriche erlaubt.<br />Einmal gespeichert, kann die Kennung nicht mehr geändert werden.'
+  text_project_identifier_info: 'Kleinbuchstaben (a-z), Ziffern, Binde- und Unterstriche erlaubt.<br />Einmal gespeichert, kann die Kennung nicht mehr geändert werden.'
   text_caracters_maximum: "Max. %{count} Zeichen."
   text_caracters_minimum: "Muss mindestens %{count} Zeichen lang sein."
   text_length_between: "Länge zwischen %{min} und %{max} Zeichen."
@@ -955,3 +955,11 @@ de:
   setting_commit_logtime_enabled: Aktiviere Zeitlogging
   notice_gantt_chart_truncated: Die Grafik ist unvollständig, da das Maximum der anzeigbaren Aufgaben überschritten wurde (%{max})
   setting_gantt_items_limit: Maximale Anzahl von Aufgaben die im Gantt-Chart angezeigt werden.
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory

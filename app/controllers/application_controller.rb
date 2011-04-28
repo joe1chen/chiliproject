@@ -19,6 +19,9 @@ require 'uri'
 require 'cgi'
 
 class ApplicationController < ActionController::Base
+
+  protected
+  
   include Redmine::I18n
 
   layout 'base'
@@ -29,8 +32,8 @@ class ApplicationController < ActionController::Base
   # TODO: remove it when Rails is fixed
   before_filter :delete_broken_cookies
   def delete_broken_cookies
-    if cookies['_redmine_session'] && cookies['_redmine_session'] !~ /--/
-      cookies.delete '_redmine_session'    
+    if cookies['_chiliproject_session'] && cookies['_chiliproject_session'] !~ /--/
+      cookies.delete '_chiliproject_session'    
       redirect_to home_path
       return false
     end
@@ -63,9 +66,9 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       # existing session
       (User.active.find(session[:user_id]) rescue nil)
-    elsif cookies[:autologin] && Setting.autologin?
+    elsif cookies[Redmine::Configuration['autologin_cookie_name']] && Setting.autologin?
       # auto-login feature starts a new session
-      user = User.try_to_autologin(cookies[:autologin])
+      user = User.try_to_autologin(cookies[Redmine::Configuration['autologin_cookie_name']])
       session[:user_id] = user.id if user
       user
     elsif params[:format] == 'atom' && params[:key] && accept_key_auth_actions.include?(params[:action])
@@ -129,9 +132,9 @@ class ApplicationController < ActionController::Base
       respond_to do |format|
         format.html { redirect_to :controller => "account", :action => "login", :back_url => url }
         format.atom { redirect_to :controller => "account", :action => "login", :back_url => url }
-        format.xml  { head :unauthorized, 'WWW-Authenticate' => 'Basic realm="Redmine API"' }
-        format.js   { head :unauthorized, 'WWW-Authenticate' => 'Basic realm="Redmine API"' }
-        format.json { head :unauthorized, 'WWW-Authenticate' => 'Basic realm="Redmine API"' }
+        format.xml  { head :unauthorized, 'WWW-Authenticate' => 'Basic realm="ChiliProject API"' }
+        format.js   { head :unauthorized, 'WWW-Authenticate' => 'Basic realm="ChiliProject API"' }
+        format.json { head :unauthorized, 'WWW-Authenticate' => 'Basic realm="ChiliProject API"' }
       end
       return false
     end
@@ -407,8 +410,8 @@ class ApplicationController < ActionController::Base
   def api_key_from_request
     if params[:key].present?
       params[:key]
-    elsif request.headers["X-Redmine-API-Key"].present?
-      request.headers["X-Redmine-API-Key"]
+    elsif request.headers["X-ChiliProject-API-Key"].present?
+      request.headers["X-ChiliProject-API-Key"]
     end
   end
 
@@ -437,7 +440,7 @@ class ApplicationController < ActionController::Base
     logger.error "Query::StatementInvalid: #{exception.message}" if logger
     session.delete(:query)
     sort_clear if respond_to?(:sort_clear)
-    render_error "An error occurred while executing the query and has been logged. Please report this error to your Redmine administrator."
+    render_error "An error occurred while executing the query and has been logged. Please report this error to your administrator."
   end
 
   # Converts the errors on an ActiveRecord object into a common JSON format

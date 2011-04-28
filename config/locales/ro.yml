@@ -743,7 +743,7 @@ ro:
   text_tip_issue_begin_day: sarcină care începe în această zi
   text_tip_issue_end_day: sarcină care se termină în această zi
   text_tip_issue_begin_end_day: sarcină care începe și se termină în această zi
-  text_project_identifier_info: 'Sunt permise doar litere mici (a-z), numere și cratime.<br />Odată salvat, identificatorul nu mai poate fi modificat.'
+  text_project_identifier_info: 'Only lower case letters (a-z), numbers, dashes and underscores are allowed.<br />Once saved, the identifier can not be changed.'
   text_caracters_maximum: "maxim %{count} caractere."
   text_caracters_minimum: "Trebuie să fie minim %{count} caractere."
   text_length_between: "Lungime între %{min} și %{max} caractere."
@@ -931,3 +931,11 @@ ro:
   setting_commit_logtime_enabled: Enable time logging
   notice_gantt_chart_truncated: The chart was truncated because it exceeds the maximum number of items that can be displayed (%{max})
   setting_gantt_items_limit: Maximum number of items displayed on the gantt chart
+  text_powered_by: Powered by %{link}
+  label_cvs_module: Module
+  label_filesystem_path: Root directory
+  label_darcs_path: Root directory
+  label_bazaar_path: Root directory
+  label_cvs_path: CVSROOT
+  label_git_path: Path to .git directory
+  label_mercurial_path: Root directory
