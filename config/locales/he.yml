@@ -1,4 +1,4 @@
-# Hebrew translation for Redmine
+# Hebrew translation for ChiliProject
 # Initiated by Dotan Nahum (dipidi@gmail.com)
 # Jul 2010 - Updated by Orgad Shaneh (orgads@gmail.com)
 
@@ -15,7 +15,10 @@ he:
     abbr_day_names: ["א'", "ב'", "ג'", "ד'", "ה'", "ו'", "ש'"]
     month_names: [~, ינואר, פברואר, מרץ, אפריל, מאי, יוני, יולי, אוגוסט, ספטמבר, אוקטובר, נובמבר, דצמבר]
     abbr_month_names: [~, יאנ, פבר, מרץ, אפר, מאי, יונ, יול, אוג, ספט, אוק, נוב, דצמ]
-    order: [ :day, :month, :year ]
+    order:
+      - :day
+      - :month
+      - :year
 
   time:
     formats:
@@ -163,7 +166,7 @@ he:
   notice_email_error: "ארעה שגיאה בעת שליחת הדואל (%{value})"
   notice_feeds_access_key_reseted: מפתח ה־RSS שלך אופס.
   notice_api_access_key_reseted: מפתח הגישה שלך ל־API אופס.
-  notice_failed_to_save_issues: "נכשרת בשמירת %{count} נושא\ים ב %{total} נבחרו: %{ids}."
+  notice_failed_to_save_issues: "נכשרת בשמירת %{count} נושאים ב %{total} נבחרו: %{ids}."
   notice_failed_to_save_members: "כשלון בשמירת חבר(ים): %{errors}."
   notice_no_issue_selected: "לא נבחר אף נושא! בחר בבקשה את הנושאים שברצונך לערוך."
   notice_account_pending: "החשבון שלך נוצר ועתה מחכה לאישור מנהל המערכת."
@@ -192,9 +195,9 @@ he:
   warning_attachments_not_saved: "כשלון בשמירת %{count} קבצים."
 
   mail_subject_lost_password: "סיסמת ה־%{value} שלך"
-  mail_body_lost_password: 'לשינו סיסמת ה־Redmine שלך, לחץ על הקישור הבא:'
+  mail_body_lost_password: 'לשינו סיסמת ה־ChiliProject שלך, לחץ על הקישור הבא:'
   mail_subject_register: "הפעלת חשבון %{value}"
-  mail_body_register: 'להפעלת חשבון ה־Redmine שלך, לחץ על הקישור הבא:'
+  mail_body_register: 'להפעלת חשבון ה־ChiliProject שלך, לחץ על הקישור הבא:'
   mail_body_account_information_external: "אתה יכול להשתמש בחשבון %{value} כדי להתחבר"
   mail_body_account_information: פרטי החשבון שלך
   mail_subject_account_activation_request: "בקשת הפעלה לחשבון %{value}"
@@ -255,7 +258,6 @@ he:
   field_admin: ניהול
   field_last_login_on: התחברות אחרונה
   field_language: שפה
-  field_effective_date: תאריך
   field_password: סיסמה
   field_new_password: סיסמה חדשה
   field_password_confirmation: אישור
@@ -271,7 +273,7 @@ he:
   field_attr_mail: תכונת דוא"ל
   field_onthefly: יצירת משתמשים זריזה
   field_start_date: תאריך התחלה
-  field_done_ratio: % גמור
+  field_done_ratio: "% גמור"
   field_auth_source: מקור הזדהות
   field_hide_mail: החבא את כתובת הדוא"ל שלי
   field_comments: הערות
@@ -846,7 +848,7 @@ he:
   text_regexp_info: כגון. ^[A-Z0-9]+$
   text_min_max_length_info: 0 משמעו ללא הגבלות
   text_project_destroy_confirmation: האם אתה בטוח שברצונך למחוק את הפרויקט ואת כל המידע הקשור אליו?
-  text_subprojects_destroy_warning: "תת־הפרויקט\ים: %{value} ימחקו גם כן."
+  text_subprojects_destroy_warning: "תת־הפרויקטים: %{value} ימחקו גם כן."
   text_workflow_edit: בחר תפקיד וסיווג כדי לערוך את זרימת העבודה
   text_are_you_sure: האם אתה בטוח?
   text_are_you_sure_with_children: האם למחוק את הנושא ואת כל בניו?
@@ -876,7 +878,7 @@ he:
   text_no_configuration_data: "לא הוגדרה תצורה עבור תפקידים, סיווגים, מצבי נושא וזרימת עבודה.\nמומלץ מאד לטעון את תצורת ברירת המחדל. תוכל לשנותה מאוחר יותר."
   text_load_default_configuration: טען את אפשרויות ברירת המחדל
   text_status_changed_by_changeset: "הוחל בסדרת השינויים %{value}."
-  text_issues_destroy_confirmation: 'האם אתה בטוח שברצונך למחוק את הנושא\ים?'
+  text_issues_destroy_confirmation: 'האם אתה בטוח שברצונך למחוק את הנושאים?'
   text_select_project_modules: 'בחר מודולים להחיל על פרויקט זה:'
   text_default_administrator_account_changed: מנהל המערכת ברירת המחדל שונה
   text_file_repository_writable: מאגר הקבצים ניתן לכתיבה
@@ -889,8 +891,8 @@ he:
   text_user_wrote: "%{value} כתב:"
   text_enumeration_destroy_question: "%{count} אוביקטים מוצבים לערך זה."
   text_enumeration_category_reassign_to: 'הצב מחדש לערך הזה:'
-  text_email_delivery_not_configured: 'לא נקבעה תצורה לשליחת דואר, וההתראות כבויות.\nקבע את תצורת שרת ה־SMTP בקובץ /etc/redmine/&lt;instance&gt;/configuration.yml והתחל את האפליקציה מחדש ע"מ לאפשר אותם.'
-  text_repository_usernames_mapping: "בחר או עדכן את משתמש Redmine הממופה לכל שם משתמש ביומן המאגר.\nמשתמשים בעלי שם או כתובת דואר זהה ב־Redmine ובמאגר ממופים באופן אוטומטי."
+  text_email_delivery_not_configured: 'לא נקבעה תצורה לשליחת דואר, וההתראות כבויות.\nקבע את תצורת שרת ה־SMTP בקובץ /etc/chiliproject/&lt;instance&gt;/configuration.yml והתחל את האפליקציה מחדש ע"מ לאפשר אותם.'
+  text_repository_usernames_mapping: "בחר או עדכן את משתמש ChiliProject הממופה לכל שם משתמש ביומן המאגר.\nמשתמשים בעלי שם או כתובת דואר זהה ב־ChiliProject ובמאגר ממופים באופן אוטומטי."
   text_diff_truncated: '... השינויים עוברים את מספר השורות המירבי לתצוגה, ולכן הם קוצצו.'
   text_custom_field_possible_values_info: שורה אחת לכל ערך
   text_wiki_page_destroy_question: לדף זה יש %{descendants} דפים בנים ותלויים. מה ברצונך לעשות?
@@ -951,3 +953,60 @@ he:
   label_cvs_path: CVSROOT
   label_git_path: Path to .git directory
   label_mercurial_path: Root directory
+  label_my_queries: My custom queries
+  label_additional_workflow_transitions_for_assignee: Additional transitions allowed when the user is the assignee
+  text_journal_changed_no_detail: "%{label} updated"
+  button_expand_all: Expand all
+  button_collapse_all: Collapse all
+  label_additional_workflow_transitions_for_author: Additional transitions allowed when the user is the author
+  field_effective_date: Due date
+  label_news_comment_added: Comment added to a news
+  field_warn_on_leaving_unsaved: Warn me when leaving a page with unsaved text
+  text_warn_on_leaving_unsaved: The current page contains unsaved text that will be lost if you leave this page.
+  text_default_encoding: "Default: UTF-8"
+  text_git_repo_example: a bare and local repository (e.g. /gitrepo, c:\gitrepo)
+  label_notify_member_plural: Email issue updates
+  label_path_encoding: Path encoding
+  text_mercurial_repo_example: local repository (e.g. /hgrepo, c:\hgrepo)
+  label_diff: diff
+  setting_issue_startdate_is_adddate: Use current date as start date for new issues
+  description_search: Searchfield
+  description_user_mail_notification: Mail notification settings
+  description_date_range_list: Choose range from list
+  description_date_to: Enter end date
+  description_query_sort_criteria_attribute: Sort attribute
+  description_message_content: Message content
+  description_wiki_subpages_reassign: Choose new parent page
+  description_available_columns: Available Columns
+  description_selected_columns: Selected Columns
+  description_date_range_interval: Choose range by selecting start and end date
+  description_project_scope: Search scope
+  description_issue_category_reassign: Choose issue category
+  description_query_sort_criteria_direction: Sort direction
+  description_notes: Notes
+  description_filter: Filter
+  description_choose_project: Projects
+  description_date_from: Enter start date
+  label_deleted_custom_field: (deleted custom field)
+  field_custom_filter: Custom LDAP filter
+  text_display_subprojects: Display subprojects
+  text_current_project: Current project
+  label_toc: Contents
+  search_input_placeholder: search ...
+  setting_mail_handler_confirmation_on_success: Send confirmation email on successful incoming email
+  label_mail_handler_confirmation: "Confirmation of email submission: %{subject}"
+  label_mail_handler_errors_with_submission: "There were errors with your email submission:"
+  label_document_watchers: Watchers
+  setting_mail_handler_confirmation_on_failure: Send confirmation email on failed incoming email
+  label_between: between
+  label_mail_handler_failure: "Failed email submission: %{subject}"
+  notice_not_authorized_action: You are not authorized to perform this action.
+  text_mail_handler_confirmation_successful: Your email has been successful added at the following url
+  field_issue_summary: Issue summary
+  field_new_saved_query: New saved query
+  field_issue_view_all_open: View all open issues
+  label_subtask_add: Add a subtask
+  label_issue_hierarchy: Issue hierarchy
+  label_time_entries: Time entries
+  label_new_time_entry: New time entry
+  label_time_entry_report: Time entry report

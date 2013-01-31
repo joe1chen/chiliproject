@@ -1,4 +1,7 @@
+#-- encoding: UTF-8
 module RFPDF
-  class GenerationError < StandardError #:nodoc:
+  module Errors
+    class GenerationError < StandardError #:nodoc:
+    end
   end
 end

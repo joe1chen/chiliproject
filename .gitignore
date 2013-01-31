@@ -4,12 +4,15 @@
 /config/configuration.yml
 /config/database.yml
 /config/email.yml
+/config/setup_load_paths.rb
 /config/initializers/session_store.rb
 /coverage
 /db/*.db
 /db/*.sqlite3
 /db/schema.rb
 /files/*
+/lib/redmine/scm/adapters/mercurial/redminehelper.pyc
+/lib/redmine/scm/adapters/mercurial/redminehelper.pyo
 /log/*.log*
 /log/mongrel_debug
 /public/dispatch.*
@@ -22,3 +25,10 @@
 /vendor/rails
 *.rbc
 doc/app
+/.bundle
+/Gemfile.lock
+/Gemfile.local
+/.rvmrc*
+/*.iml
+/.idea
+.rbx

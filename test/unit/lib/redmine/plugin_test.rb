@@ -1,20 +1,16 @@
-# Redmine - project management software
-# Copyright (C) 2006-2008  Jean-Philippe Lang
+#-- encoding: UTF-8
+#-- copyright
+# ChiliProject is a project management system.
+#
+# Copyright (C) 2010-2013 the ChiliProject Team
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
+#
+# See doc/COPYRIGHT.rdoc for more details.
+#++
 require File.expand_path('../../../../test_helper', __FILE__)
 
 class Redmine::PluginTest < ActiveSupport::TestCase
@@ -24,11 +20,11 @@ class Redmine::PluginTest < ActiveSupport::TestCase
     # In case some real plugins are installed
     @klass.clear
   end
-  
+
   def teardown
     @klass.clear
   end
-  
+
   def test_register
     @klass.register :foo do
       name 'Foo plugin'
@@ -39,9 +35,9 @@ class Redmine::PluginTest < ActiveSupport::TestCase
       version '0.0.1'
       settings :default => {'sample_setting' => 'value', 'foo'=>'bar'}, :partial => 'foo/settings'
     end
-    
+
     assert_equal 1, @klass.all.size
-    
+
     plugin = @klass.find('foo')
     assert plugin.is_a?(Redmine::Plugin)
     assert_equal :foo, plugin.id
@@ -52,11 +48,11 @@ class Redmine::PluginTest < ActiveSupport::TestCase
     assert_equal 'This is a test plugin', plugin.description
     assert_equal '0.0.1', plugin.version
   end
-  
+
   def test_requires_redmine
     test = self
     version = Redmine::VERSION.to_a.slice(0,3).join('.')
-    
+
     @klass.register :foo do
       test.assert requires_redmine(:version_or_higher => '0.1.0')
       test.assert requires_redmine(:version_or_higher => version)
@@ -64,7 +60,7 @@ class Redmine::PluginTest < ActiveSupport::TestCase
       test.assert_raise Redmine::PluginRequirementError do
         requires_redmine(:version_or_higher => '99.0.0')
       end
-      
+
       test.assert requires_redmine(:version => version)
       test.assert requires_redmine(:version => [version, '99.0.0'])
       test.assert_raise Redmine::PluginRequirementError do
@@ -76,15 +72,38 @@ class Redmine::PluginTest < ActiveSupport::TestCase
     end
   end
 
+  def test_requires_chiliproject
+    test = self
+    version = Redmine::VERSION.to_semver
+
+    @klass.register :foo do
+      test.assert requires_chiliproject('>= 0.1')
+      test.assert requires_chiliproject(">= #{version}")
+      test.assert requires_chiliproject(version)
+      test.assert_raise Redmine::PluginRequirementError do
+        requires_chiliproject('>= 99.0.0')
+      end
+      test.assert_raise Redmine::PluginRequirementError do
+        requires_chiliproject('< 0.9')
+      end
+      requires_chiliproject('> 0.9', "<= 99.0.0")
+      test.assert_raise Redmine::PluginRequirementError do
+        requires_chiliproject('< 0.9', ">= 98.0.0")
+      end
+
+      test.assert requires_chiliproject("~> #{Redmine::VERSION.to_semver.gsub(/\d+$/, '0')}")
+    end
+  end
+
   def test_requires_redmine_plugin
     test = self
     other_version = '0.5.0'
-    
+
     @klass.register :other do
       name 'Other'
       version other_version
     end
-    
+
     @klass.register :foo do
       test.assert requires_redmine_plugin(:other, :version_or_higher => '0.1.0')
       test.assert requires_redmine_plugin(:other, :version_or_higher => other_version)
@@ -92,7 +111,7 @@ class Redmine::PluginTest < ActiveSupport::TestCase
       test.assert_raise Redmine::PluginRequirementError do
         requires_redmine_plugin(:other, :version_or_higher => '99.0.0')
       end
-      
+
       test.assert requires_redmine_plugin(:other, :version => other_version)
       test.assert requires_redmine_plugin(:other, :version => [other_version, '99.0.0'])
       test.assert_raise Redmine::PluginRequirementError do
@@ -111,7 +130,7 @@ class Redmine::PluginTest < ActiveSupport::TestCase
       test.assert_raise Redmine::PluginNotFound do
         requires_redmine_plugin(:missing, :version => '0.1.0')
       end
-      
+
     end
   end
 end

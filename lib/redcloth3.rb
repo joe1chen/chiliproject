@@ -1,3 +1,4 @@
+#-- encoding: UTF-8
 #                                vim:ts=4:sw=4:
 # = RedCloth - Textile and Markdown Hybrid for Ruby
 #
@@ -296,11 +297,11 @@ class RedCloth3 < String
         rip_offtags text
         no_textile text
         escape_html_tags text
+        # need to do this before #hard_break and #blocks
+        block_textile_quotes text unless @lite_mode
         hard_break text 
         unless @lite_mode
             refs text
-            # need to do this before text is split by #blocks
-            block_textile_quotes text
             blocks text
         end
         inline text
@@ -707,11 +708,13 @@ class RedCloth3 < String
             atts = pba( atts )
 
             # pass to prefix handler
+            replacement = nil
             if respond_to? "textile_#{ tag }", true
-                text.gsub!( $&, method( "textile_#{ tag }" ).call( tag, atts, cite, content ) )
+              replacement = method( "textile_#{ tag }" ).call( tag, atts, cite, content )
             elsif respond_to? "textile_#{ tagpre }_", true
-                text.gsub!( $&, method( "textile_#{ tagpre }_" ).call( tagpre, num, atts, cite, content ) )
+              replacement = method( "textile_#{ tagpre }_" ).call( tagpre, num, atts, cite, content )  
             end
+            text.gsub!( $& ) { replacement } if replacement
         end
     end
     
@@ -936,7 +939,7 @@ class RedCloth3 < String
             stln,algn,atts,url,title,href,href_a1,href_a2 = $~[1..8]
             htmlesc title
             atts = pba( atts )
-            atts = " src=\"#{ url }\"#{ atts }"
+            atts = " src=\"#{ htmlesc url.dup }\"#{ atts }"
             atts << " title=\"#{ title }\"" if title
             atts << " alt=\"#{ title }\"" 
             # size = @getimagesize($url);

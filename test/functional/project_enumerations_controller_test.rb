@@ -1,8 +1,22 @@
+#-- encoding: UTF-8
+#-- copyright
+# ChiliProject is a project management system.
+#
+# Copyright (C) 2010-2013 the ChiliProject Team
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# See doc/COPYRIGHT.rdoc for more details.
+#++
+
 require File.expand_path('../../test_helper', __FILE__)
 
 class ProjectEnumerationsControllerTest < ActionController::TestCase
   fixtures :all
-  
+
   def setup
     @request.session[:user_id] = nil
     Setting.default_language = 'en'
@@ -76,7 +90,7 @@ class ProjectEnumerationsControllerTest < ActionController::TestCase
                                                  })
     assert project_activity_two.save
 
-    
+
     put :update, :project_id => 1, :enumerations => {
       project_activity.id => {"custom_field_values"=>{"7" => "1"}, "active"=>"0"}, # De-activate
       project_activity_two.id => {"custom_field_values"=>{"7" => "1"}, "active"=>"0"} # De-activate
@@ -102,7 +116,7 @@ class ProjectEnumerationsControllerTest < ActionController::TestCase
 
   def test_update_when_creating_new_activities_will_convert_existing_data
     assert_equal 3, TimeEntry.find_all_by_activity_id_and_project_id(9, 1).size
-    
+
     @request.session[:user_id] = 2 # manager
     put :update, :project_id => 1, :enumerations => {
       "9"=> {"parent_id"=>"9", "custom_field_values"=>{"7" => "1"}, "active"=>"0"} # Design, De-activate
@@ -117,6 +131,10 @@ class ProjectEnumerationsControllerTest < ActionController::TestCase
   end
 
   def test_update_when_creating_new_activities_will_not_convert_existing_data_if_an_exception_is_raised
+    # SQLite doesn't support nested transactions, thus we can't test transaction-
+    # based features in a test wrapped in a transaction.
+    return if ChiliProject::Database.sqlite?
+
     # TODO: Need to cause an exception on create but these tests
     # aren't setup for mocking.  Just create a record now so the
     # second one is a dupicate
@@ -126,7 +144,7 @@ class ProjectEnumerationsControllerTest < ActionController::TestCase
 
     assert_equal 3, TimeEntry.find_all_by_activity_id_and_project_id(9, 1).size
     assert_equal 1, TimeEntry.find_all_by_activity_id_and_project_id(10, 1).size
-    
+
     @request.session[:user_id] = 2 # manager
     put :update, :project_id => 1, :enumerations => {
       "9"=> {"parent_id"=>"9", "custom_field_values"=>{"7" => "1"}, "active"=>"0"}, # Design
@@ -164,7 +182,7 @@ class ProjectEnumerationsControllerTest < ActionController::TestCase
     assert_nil TimeEntryActivity.find_by_id(project_activity.id)
     assert_nil TimeEntryActivity.find_by_id(project_activity_two.id)
   end
-  
+
   def test_destroy_should_reassign_time_entries_back_to_the_system_activity
     @request.session[:user_id] = 2 # manager
     project_activity = TimeEntryActivity.new({
@@ -176,7 +194,7 @@ class ProjectEnumerationsControllerTest < ActionController::TestCase
     assert project_activity.save
     assert TimeEntry.update_all("activity_id = '#{project_activity.id}'", ["project_id = ? AND activity_id = ?", 1, 9])
     assert_equal 3, TimeEntry.find_all_by_activity_id_and_project_id(project_activity.id, 1).size
-    
+
     delete :destroy, :project_id => 1
     assert_response :redirect
     assert_redirected_to '/projects/ecookbook/settings/activities'

@@ -1,22 +1,26 @@
-# redMine - project management software
-# Copyright (C) 2006-2007  Jean-Philippe Lang
+#-- encoding: UTF-8
+#-- copyright
+# ChiliProject is a project management system.
+#
+# Copyright (C) 2010-2013 the ChiliProject Team
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See doc/COPYRIGHT.rdoc for more details.
+#++
 
 class MessageObserver < ActiveRecord::Observer
   def after_create(message)
-    Mailer.deliver_message_posted(message) if Setting.notified_events.include?('message_posted')
+    if Setting.notified_events.include?('message_posted')
+      recipients = message.recipients
+      recipients += message.root.watcher_recipients
+      recipients += message.board.watcher_recipients
+      recipients.uniq.each do |recipient|
+        Mailer.deliver_message_posted(message, recipient)
+      end
+    end
   end
 end

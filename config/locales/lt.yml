@@ -1,6 +1,6 @@
 # Lithuanian translations for Ruby on Rails
 # by Laurynas Butkus (laurynas.butkus@gmail.com)
-# Redmine translation by Gediminas Muižis gediminas.muizis@gmail.com
+# ChiliProject translation by Gediminas Muižis gediminas.muizis@gmail.com
 #                      and Sergej Jegorov sergej.jegorov@gmail.com
 #					   and Gytis Gurklys gytis.gurklys@gmail.com
 lt:
@@ -22,7 +22,10 @@ lt:
     month_names: [~, sausio, vasario, kovo, balandžio, gegužės, birželio, liepos, rugpjūčio, rugsėjo, spalio, lapkričio, gruodžio]
     abbr_month_names: [~, Sau, Vas, Kov, Bal, Geg, Bir, Lie, Rgp, Rgs, Spa, Lap, Grd]
     # Used in date_select and datime_select.
-    order: [ :year, :month, :day ]
+    order:
+      - :year
+      - :month
+      - :day
 
   time:
     formats:
@@ -86,7 +89,7 @@ lt:
       separator: ","
       delimiter: " "
       precision: 3
-      
+
     currency:
       format:
         format: "%n %u"
@@ -94,15 +97,15 @@ lt:
         separator: ","
         delimiter: " "
         precision: 2
-        
+
     percentage:
       format:
         delimiter: ""
-        
+
     precision:
       format:
         delimiter: ""
-        
+
     human:
       format:
         delimiter: ""
@@ -180,9 +183,9 @@ lt:
         not_same_project: "nepriklauso tam pačiam projektui"
         circular_dependency: "Šis ryšys sukurtų ciklinę priklausomybę"
         cant_link_an_issue_with_a_descendant: "An issue can not be linked to one of its subtasks"
-    
+
   actionview_instancetag_blank_option: prašom parinkti
-  
+
   general_text_No: 'Ne'
   general_text_Yes: 'Taip'
   general_text_no: 'ne'
@@ -193,7 +196,7 @@ lt:
   general_csv_encoding: UTF-8
   general_pdf_encoding: UTF-8
   general_first_day_of_week: '1'
-  
+
   notice_account_updated: Paskyra buvo sėkmingai atnaujinta.
   notice_account_invalid_creditentials: Negaliojantis vartotojo vardas ar slaptažodis
   notice_account_password_updated: Slaptažodis buvo sėkmingai atnaujintas.
@@ -218,7 +221,7 @@ lt:
   notice_account_pending: "Jūsų paskyra buvo sukurta ir dabar laukiama administratoriaus patvirtinimo."
   notice_default_data_loaded: Numatytoji konfiguracija sėkmingai užkrauta.
   notice_unable_delete_version: Neįmanoma panaikinti versiją
-  
+
   error_can_t_load_default_data: "Numatytoji konfiguracija negali būti užkrauta: %{value}"
   error_scm_not_found: "Duomenys ir/ar pakeitimai saugykloje(repozitorojoje) neegzistuoja."
   error_scm_command_failed: "Įvyko klaida jungiantis prie saugyklos: %{value}"
@@ -248,7 +251,7 @@ lt:
 
   gui_validation_error: 1 klaida
   gui_validation_error_plural: "%{count} klaidų(os)"
-  
+
   field_name: Pavadinimas
   field_description: Aprašas
   field_summary: Santrauka
@@ -295,7 +298,6 @@ lt:
   field_admin: Administratorius
   field_last_login_on: Paskutinis ryšys
   field_language: Kalba
-  field_effective_date: Data
   field_password: Slaptažodis
   field_new_password: Naujas slaptažodis
   field_password_confirmation: Patvirtinimas
@@ -311,7 +313,7 @@ lt:
   field_attr_mail: Elektroninio pašto požymis
   field_onthefly: Automatinis vartotojų registravimas
   field_start_date: Pradėti
-  field_done_ratio: % atlikta
+  field_done_ratio: "% atlikta"
   field_auth_source: Autentiškumo nustatymo būdas
   field_hide_mail: Paslėpkite mano elektroninio pašto adresą
   field_comments: Komentaras
@@ -449,7 +451,7 @@ lt:
   project_module_wiki: Wiki
   project_module_repository: Saugykla
   project_module_boards: Forumai
-  
+
   label_user: Vartotojas
   label_user_plural: Vartotojai
   label_user_new: Naujas vartotojas
@@ -886,7 +888,7 @@ lt:
   text_enumeration_destroy_question: "%{count} objektai priskirti šiai reikšmei."
   text_enumeration_category_reassign_to: 'Priskirti juos šiai reikšmei:'
   text_email_delivery_not_configured: "El.pašto siuntimas nesukonfigūruotas, ir perspėjimai neaktyvus.\nSukonfigūruokite savo SMTP serverį byloje config/configuration.yml ir perleiskite programą norėdami pritaikyti pakeitimus."
-  text_repository_usernames_mapping: "Parinkite  ar atnaujinkite Redmine vartotojo vardą kiekvienam saugyklos vardui, kuris paminėtas saugyklos log'e.\nVartotojai, turintys tą patį Redmine ir saugyklos vardą ar el.paštą automatiškai surišti."
+  text_repository_usernames_mapping: "Parinkite  ar atnaujinkite ChiliProject vartotojo vardą kiekvienam saugyklos vardui, kuris paminėtas saugyklos log'e.\nVartotojai, turintys tą patį ChiliProject ir saugyklos vardą ar el.paštą automatiškai surišti."
   text_diff_truncated: "... Šis diff'as nukarpytas, nes jis viršijo maksimalų rodomą eilučių skaičių."
   text_custom_field_possible_values_info: 'Po vieną eilutę kiekvienai reikšmei'
   text_wiki_page_destroy_question: This page has %{descendants} child page(s) and descendant(s). What do you want to do?
@@ -917,7 +919,7 @@ lt:
   default_priority_immediate: Neatidėliotinas
   default_activity_design: Projektavimas
   default_activity_development: Vystymas
-  
+
   enumeration_issue_priorities: Darbo prioritetai
   enumeration_doc_categories: Dokumento kategorijos
   enumeration_activities: Veiklos (laiko sekimas)
@@ -1006,3 +1008,60 @@ lt:
   label_cvs_path: CVSROOT
   label_git_path: Path to .git directory
   label_mercurial_path: Root directory
+  label_my_queries: My custom queries
+  label_additional_workflow_transitions_for_assignee: Additional transitions allowed when the user is the assignee
+  text_journal_changed_no_detail: "%{label} updated"
+  button_expand_all: Expand all
+  button_collapse_all: Collapse all
+  label_additional_workflow_transitions_for_author: Additional transitions allowed when the user is the author
+  field_effective_date: Due date
+  label_news_comment_added: Comment added to a news
+  field_warn_on_leaving_unsaved: Warn me when leaving a page with unsaved text
+  text_warn_on_leaving_unsaved: The current page contains unsaved text that will be lost if you leave this page.
+  text_default_encoding: "Default: UTF-8"
+  text_git_repo_example: a bare and local repository (e.g. /gitrepo, c:\gitrepo)
+  label_notify_member_plural: Email issue updates
+  label_path_encoding: Path encoding
+  text_mercurial_repo_example: local repository (e.g. /hgrepo, c:\hgrepo)
+  label_diff: diff
+  setting_issue_startdate_is_adddate: Use current date as start date for new issues
+  description_search: Searchfield
+  description_user_mail_notification: Mail notification settings
+  description_date_range_list: Choose range from list
+  description_date_to: Enter end date
+  description_query_sort_criteria_attribute: Sort attribute
+  description_message_content: Message content
+  description_wiki_subpages_reassign: Choose new parent page
+  description_available_columns: Available Columns
+  description_selected_columns: Selected Columns
+  description_date_range_interval: Choose range by selecting start and end date
+  description_project_scope: Search scope
+  description_issue_category_reassign: Choose issue category
+  description_query_sort_criteria_direction: Sort direction
+  description_notes: Notes
+  description_filter: Filter
+  description_choose_project: Projects
+  description_date_from: Enter start date
+  label_deleted_custom_field: (deleted custom field)
+  field_custom_filter: Custom LDAP filter
+  text_display_subprojects: Display subprojects
+  text_current_project: Current project
+  label_toc: Contents
+  search_input_placeholder: search ...
+  setting_mail_handler_confirmation_on_success: Send confirmation email on successful incoming email
+  label_mail_handler_confirmation: "Confirmation of email submission: %{subject}"
+  label_mail_handler_errors_with_submission: "There were errors with your email submission:"
+  label_document_watchers: Watchers
+  setting_mail_handler_confirmation_on_failure: Send confirmation email on failed incoming email
+  label_between: between
+  label_mail_handler_failure: "Failed email submission: %{subject}"
+  notice_not_authorized_action: You are not authorized to perform this action.
+  text_mail_handler_confirmation_successful: Your email has been successful added at the following url
+  field_issue_summary: Issue summary
+  field_new_saved_query: New saved query
+  field_issue_view_all_open: View all open issues
+  label_subtask_add: Add a subtask
+  label_issue_hierarchy: Issue hierarchy
+  label_time_entries: Time entries
+  label_new_time_entry: New time entry
+  label_time_entry_report: Time entry report

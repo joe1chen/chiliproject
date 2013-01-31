@@ -1,19 +1,16 @@
-# redMine - project management software
-# Copyright (C) 2006  Jean-Philippe Lang
+#-- encoding: UTF-8
+#-- copyright
+# ChiliProject is a project management system.
+#
+# Copyright (C) 2010-2013 the ChiliProject Team
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
 # as published by the Free Software Foundation; either version 2
 # of the License, or (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# See doc/COPYRIGHT.rdoc for more details.
+#++
 
 class VersionsController < ApplicationController
   menu_item :roadmap
@@ -23,20 +20,18 @@ class VersionsController < ApplicationController
   before_filter :find_project, :only => [:index, :new, :create, :close_completed]
   before_filter :authorize
 
-  helper :custom_fields
-  helper :projects
 
   def index
     @trackers = @project.trackers.find(:all, :order => 'position')
     retrieve_selected_tracker_ids(@trackers, @trackers.select {|t| t.is_in_roadmap?})
     @with_subprojects = params[:with_subprojects].nil? ? Setting.display_subprojects_issues? : (params[:with_subprojects] == '1')
     project_ids = @with_subprojects ? @project.self_and_descendants.collect(&:id) : [@project.id]
-    
+
     @versions = @project.shared_versions || []
     @versions += @project.rolled_up_versions.visible if @with_subprojects
     @versions = @versions.uniq.sort
     @versions.reject! {|version| version.closed? || version.completed? } unless params[:completed]
-    
+
     @issues_by_version = {}
     unless @selected_tracker_ids.empty?
       @versions.each do |version|
@@ -49,19 +44,19 @@ class VersionsController < ApplicationController
     end
     @versions.reject! {|version| !project_ids.include?(version.project_id) && @issues_by_version[version].blank?}
   end
-  
+
   def show
     @issues = @version.fixed_issues.visible.find(:all,
       :include => [:status, :tracker, :priority],
       :order => "#{Tracker.table_name}.position, #{Issue.table_name}.id")
   end
-  
+
   def new
     @version = @project.versions.build
     if params[:version]
       attributes = params[:version].dup
       attributes.delete('sharing') unless attributes.nil? || @version.allowed_sharings.include?(attributes['sharing'])
-      @version.attributes = attributes
+      @version.safe_attributes = attributes
     end
   end
 
@@ -71,7 +66,7 @@ class VersionsController < ApplicationController
     if params[:version]
       attributes = params[:version].dup
       attributes.delete('sharing') unless attributes.nil? || @version.allowed_sharings.include?(attributes['sharing'])
-      @version.attributes = attributes
+      @version.safe_attributes = attributes
     end
 
     if request.post?
@@ -101,12 +96,13 @@ class VersionsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     if request.put? && params[:version]
       attributes = params[:version].dup
       attributes.delete('sharing') unless @version.allowed_sharings.include?(attributes['sharing'])
-      if @version.update_attributes(attributes)
+      @version.safe_attributes = attributes
+      if @version.save
         flash[:notice] = l(:notice_successful_update)
         redirect_to :controller => 'projects', :action => 'settings', :tab => 'versions', :id => @project
       else
@@ -116,7 +112,7 @@ class VersionsController < ApplicationController
       end
     end
   end
-  
+
   def close_completed
     if request.put?
       @project.close_completed_versions
@@ -133,7 +129,7 @@ class VersionsController < ApplicationController
       redirect_to :controller => 'projects', :action => 'settings', :tab => 'versions', :id => @project
     end
   end
-  
+
   def status_by
     respond_to do |format|
       format.html { render :action => 'show' }
